@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import video1 from "@assets/WhatsApp Video 2025-11-23 at 11.17.31 PM_1763920386585.mp4";
 import video2 from "@assets/WhatsApp Video 2025-11-23 at 11.17.32 PM_1763920386585.mp4";
 import video3 from "@assets/WhatsApp Video 2025-11-23 at 11.18.31 PM_1763920386586.mp4";
-import specialEdit from "@assets/WhatsApp Video 2025-11-23 at 11.37.52 PM_1763921391724.mp4";
+import specialEdit from "@assets/WhatsApp Video 2025-11-23 at 11.41.50 PM_1763921605833.mp4";
 import { Edit2, Volume2, VolumeX } from "lucide-react";
 
 const videos = [
