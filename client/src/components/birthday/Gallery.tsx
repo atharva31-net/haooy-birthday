@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
-import photo1 from "@assets/generated_images/bouquet_of_pink_peonies.png";
-import photo2 from "@assets/generated_images/sunset_over_the_ocean.png";
-// Reusing placeholder for demo purposes, in real app these would be different user photos
-import photo3 from "@assets/generated_images/soft_watercolor_romantic_background.png"; 
+import photo1 from "@assets/WhatsApp Image 2025-11-23 at 11.08.12 PM_1763919604345.jpeg";
+import photo2 from "@assets/3_1763919610467.jpeg";
+import photo3 from "@assets/2_1763919615344.jpeg";
+import photo4 from "@assets/4_1763919633102.jpeg";
 
 const photos = [
-  { src: photo1, alt: "Beautiful Flowers", caption: "Flowers as lovely as you", rotation: -2 },
-  { src: photo2, alt: "Sunset", caption: "Memories of our trip", rotation: 3 },
-  { src: photo3, alt: "Background", caption: "Just aesthetic vibes", rotation: -1 },
-  { src: photo1, alt: "More Flowers", caption: "Every day is special", rotation: 2 },
+  { src: photo1, alt: "My favorite", caption: "Pretty in purple", rotation: -2 },
+  { src: photo2, alt: "Saree", caption: "Stunning", rotation: 3 },
+  { src: photo3, alt: "Colors", caption: "Vibrant soul", rotation: -1 },
+  { src: photo4, alt: "Mirror selfie", caption: "Cutest smile", rotation: 2 },
 ];
 
 export default function Gallery() {
@@ -21,9 +21,9 @@ export default function Gallery() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-4">Our Memories</h2>
+          <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-4">My Favourite Photos of Yours</h2>
           <p className="text-muted-foreground max-w-md mx-auto">
-            Just a few snapshots of the beautiful moments we've shared together.
+            Just a few snapshots of the beautiful moments.
           </p>
         </motion.div>
 
@@ -39,7 +39,7 @@ export default function Gallery() {
               style={{ rotate: `${photo.rotation}deg` }}
             >
               <div className="bg-white p-3 pb-12 shadow-lg rounded-sm transform transition-transform duration-300 hover:scale-105 hover:z-10 hover:rotate-0">
-                <div className="aspect-square overflow-hidden bg-gray-100 mb-2">
+                <div className="aspect-[3/4] overflow-hidden bg-gray-100 mb-2">
                   <img 
                     src={photo.src} 
                     alt={photo.alt} 
