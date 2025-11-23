@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { differenceInSeconds, formatDuration, intervalToDuration } from "date-fns";
+import { Volume2, VolumeX } from "lucide-react";
 import bgVideo from "@assets/WhatsApp Video 2025-11-23 at 11.11.00 AM_1763876590251.mp4";
 
 interface CountdownOverlayProps {
@@ -10,6 +11,8 @@ interface CountdownOverlayProps {
 export default function CountdownOverlay({ targetDate }: CountdownOverlayProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   function calculateTimeLeft() {
     const now = new Date();
@@ -31,6 +34,17 @@ export default function CountdownOverlay({ targetDate }: CountdownOverlayProps) 
     return () => clearInterval(timer);
   }, [targetDate]);
 
+  // Handle volume control
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      if (!videoRef.current.muted) {
+        videoRef.current.volume = 0.2; // Set volume to 20%
+      }
+      setIsMuted(videoRef.current.muted);
+    }
+  };
+
   // Convert seconds to duration object for display
   const duration = intervalToDuration({ start: 0, end: timeLeft * 1000 });
 
@@ -45,6 +59,7 @@ export default function CountdownOverlay({ targetDate }: CountdownOverlayProps) 
           {/* Video Background */}
           <div className="absolute inset-0 z-0">
             <video
+              ref={videoRef}
               autoPlay
               loop
               muted
@@ -57,6 +72,14 @@ export default function CountdownOverlay({ targetDate }: CountdownOverlayProps) 
             <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
           </div>
           
+          {/* Volume Control */}
+          <button 
+            onClick={toggleMute}
+            className="absolute top-8 right-8 z-50 p-3 rounded-full bg-black/30 backdrop-blur-md border border-white/20 text-white hover:bg-black/50 transition-colors"
+          >
+            {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
+          </button>
+
           <motion.div 
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
