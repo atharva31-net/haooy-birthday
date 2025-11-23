@@ -17,7 +17,7 @@ export default function BirthdayPage() {
   return (
     <div className="min-h-screen w-full bg-background selection:bg-primary/20">
       {/* The Countdown Overlay - Blocks access until birthdayDate */}
-      <CountdownOverlay targetDate={birthdayDate} />
+      {/* <CountdownOverlay targetDate={birthdayDate} /> */}
       
       <Hero />
       
