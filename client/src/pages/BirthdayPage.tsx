@@ -3,17 +3,27 @@ import Letter from "@/components/birthday/Letter";
 import Gallery from "@/components/birthday/Gallery";
 import VideoSection from "@/components/birthday/VideoSection";
 import CountdownOverlay from "@/components/birthday/CountdownOverlay";
+import RelationshipTimer from "@/components/birthday/RelationshipTimer";
 
 export default function BirthdayPage() {
-  // Set the target date here! 
-  // For now, I've set it to 24 hours from now so you can see the countdown.
-  // Change this to her actual birthday, e.g., new Date('2025-11-24T00:00:00')
-  const targetDate = new Date(Date.now() + 24 * 60 * 60 * 1000); 
+  // 1. TARGET DATE: When does the site unlock? (Her Birthday)
+  // Example: new Date('2025-11-24T00:00:00')
+  const birthdayDate = new Date(Date.now() + 24 * 60 * 60 * 1000); 
+
+  // 2. START DATE: When did you start dating?
+  // Example: new Date('2023-05-15')
+  const relationshipStartDate = new Date('2023-01-01');
 
   return (
     <div className="min-h-screen w-full bg-background selection:bg-primary/20">
-      <CountdownOverlay targetDate={targetDate} />
+      {/* The Countdown Overlay - Blocks access until birthdayDate */}
+      <CountdownOverlay targetDate={birthdayDate} />
+      
       <Hero />
+      
+      {/* How long we've been together */}
+      <RelationshipTimer startDate={relationshipStartDate} />
+      
       <Letter />
       <Gallery />
       <VideoSection />
