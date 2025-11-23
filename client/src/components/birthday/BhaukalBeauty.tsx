@@ -105,7 +105,10 @@ export default function BhaukalBeauty() {
               className="font-serif text-lg md:text-xl text-center text-foreground/80 leading-relaxed outline-none min-h-[100px] empty:before:content-[attr(placeholder)] empty:before:text-muted-foreground"
               placeholder="Write something special about her beauty/swag here... (Click to edit)"
             >
-              Harshita, your style isn't just about what you wear, it's about the confidence you carry. Every look tells a story, and you're the main character in all of them. Keep slaying! ✨
+              Tera yun nazrein jhuka ke muskurana, <br/>
+              Jaise chaand ka badalon mein chup jaana. <br/>
+              Sadgi mein bhi itna kahar dhaati ho, <br/>
+              Bina koshish kiye hi dil chura le jaati ho. ✨
             </div>
           </div>
         </motion.div>

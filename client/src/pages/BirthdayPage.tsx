@@ -24,7 +24,6 @@ export default function BirthdayPage() {
       <Letter />
       <Gallery />
       <BhaukalBeauty />
-      <VideoSection />
       
       <footer className="py-12 text-center text-muted-foreground text-sm">
         <p>Made with ❤️ for you</p>
