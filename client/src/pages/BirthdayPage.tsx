@@ -7,8 +7,8 @@ import RelationshipTimer from "@/components/birthday/RelationshipTimer";
 
 export default function BirthdayPage() {
   // 1. TARGET DATE: When does the site unlock? (Her Birthday)
-  // Example: new Date('2025-11-24T00:00:00')
-  const birthdayDate = new Date(Date.now() + 24 * 60 * 60 * 1000); 
+  // Set to November 25, 2025 at midnight (start of the day)
+  const birthdayDate = new Date('2025-11-25T00:00:00'); 
 
   // 2. START DATE: When did you start dating?
   // Example: new Date('2023-05-15')
