@@ -77,6 +77,9 @@ export default function CountdownOverlay({ targetDate }: CountdownOverlayProps) 
             <p className="mt-12 text-white/90 font-script text-2xl animate-pulse drop-shadow-md">
               The surprise unlocks soon ❤️
             </p>
+            <p className="mt-4 text-white/80 font-serif text-lg italic drop-shadow-md">
+              Please wait Harshita
+            </p>
           </motion.div>
         </motion.div>
       )}
