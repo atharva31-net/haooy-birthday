@@ -21,9 +21,6 @@ export default function BirthdayPage() {
       
       <Hero />
       
-      {/* How long we've been together */}
-      <RelationshipTimer startDate={relationshipStartDate} />
-      
       <Letter />
       <Gallery />
       <VideoSection />

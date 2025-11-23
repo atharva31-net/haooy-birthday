@@ -22,21 +22,21 @@ export default function Letter() {
             </div>
           </div>
 
-          <div className="font-serif space-y-6 text-lg md:text-xl text-foreground/80 leading-loose">
-            <p>
-              My Dearest,
+          <div className="font-serif space-y-6 text-lg md:text-xl text-foreground/80 leading-loose text-left">
+            <p className="font-bold text-2xl mb-6">
+              Dear Harshita ❤️
             </p>
             <p>
-              As you read this, I want you to know how incredibly lucky I feel to celebrate another year of your life. You are the melody in my quiet moments and the excitement in my days.
+              Happiest Birthday to you hope this puts a smile on your face cause you look the prettiest with it. I know letters and large paragraphs are not your thing and writing it in english is barely our thing but woh thoda jyada prettyy lgega isliye i will say it to you in English only.
             </p>
             <p>
-              Every smile you share lights up the room, and every laugh is my favorite sound. I wanted to make this little corner of the internet just for you—to keep our memories, my words, and my love safe forever.
+              You have been someone who has filled my empty spaces the one who taught me many things I have grown with you and this connection feels very special. through the ups and downs through the bright and dark through the rough and smooth I want to be with you.
             </p>
             <p>
-              Thank you for being you. For being kind, for being beautiful inside and out, and for choosing me to walk beside you.
+              There have been many times where I didn't get you things what you like or dont like what are the things you desire what are the things you dont but I am still learning, you have been by far the most beutiful element I have studied yes even more than the boring law, constituion I read.
             </p>
             <p>
-              I love you more than words can say (though I tried my best here!).
+              Stay free Harshita stay happy stay blessed and also work Hard!! very Hard!!
             </p>
           </div>
 

@@ -30,10 +30,10 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
-          className="font-serif text-6xl md:text-8xl lg:text-9xl text-foreground drop-shadow-sm mb-6"
+          className="font-serif text-5xl md:text-7xl lg:text-8xl text-foreground drop-shadow-sm mb-6 leading-tight"
         >
-          Happy <br/>
-          <span className="text-primary italic">Birthday</span>
+          Happy Birthday <br/>
+          <span className="text-primary italic">Harshita</span>
         </motion.h1>
 
         <motion.p
