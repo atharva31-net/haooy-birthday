@@ -1,9 +1,9 @@
 import Hero from "@/components/birthday/Hero";
 import Letter from "@/components/birthday/Letter";
 import Gallery from "@/components/birthday/Gallery";
+import BhaukalBeauty from "@/components/birthday/BhaukalBeauty";
 import VideoSection from "@/components/birthday/VideoSection";
 import CountdownOverlay from "@/components/birthday/CountdownOverlay";
-import RelationshipTimer from "@/components/birthday/RelationshipTimer";
 
 export default function BirthdayPage() {
   // 1. TARGET DATE: When does the site unlock? (Her Birthday)
@@ -23,6 +23,7 @@ export default function BirthdayPage() {
       
       <Letter />
       <Gallery />
+      <BhaukalBeauty />
       <VideoSection />
       
       <footer className="py-12 text-center text-muted-foreground text-sm">
