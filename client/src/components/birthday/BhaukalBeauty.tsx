@@ -1,13 +1,64 @@
 import { motion } from "framer-motion";
+import { useRef, useState } from "react";
 import video1 from "@assets/WhatsApp Video 2025-11-23 at 11.17.31 PM_1763920386585.mp4";
 import video2 from "@assets/WhatsApp Video 2025-11-23 at 11.17.32 PM_1763920386585.mp4";
 import video3 from "@assets/WhatsApp Video 2025-11-23 at 11.18.31 PM_1763920386586.mp4";
+import { Edit2 } from "lucide-react";
 
 const videos = [
   { src: video1, caption: "Slaying it!" },
   { src: video2, caption: "Pure Vibes" },
   { src: video3, caption: "Queen Behavior" },
 ];
+
+function VideoCard({ video, index }: { video: { src: string, caption: string }, index: number }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleViewportEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Autoplay might be blocked without interaction
+        console.log("Autoplay blocked");
+      });
+    }
+  };
+
+  const handleViewportLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-20%" }}
+      transition={{ delay: index * 0.2 }}
+      onViewportEnter={handleViewportEnter}
+      onViewportLeave={handleViewportLeave}
+      className="group"
+    >
+      <div className="bg-white p-2 pb-4 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border border-primary/10">
+        <div className="aspect-[9/16] relative rounded-xl overflow-hidden bg-black/5">
+          <video
+            ref={videoRef}
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src={video.src} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div className="mt-4 text-center">
+          <p className="font-script text-xl text-foreground/80">{video.caption}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function BhaukalBeauty() {
   return (
@@ -29,34 +80,35 @@ export default function BhaukalBeauty() {
           <div className="h-1 w-24 bg-primary/30 mx-auto rounded-full" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
           {videos.map((video, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              className="group"
-            >
-              <div className="bg-white p-2 pb-4 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border border-primary/10">
-                <div className="aspect-[9/16] relative rounded-xl overflow-hidden bg-black/5">
-                  <video
-                    controls
-                    className="w-full h-full object-cover"
-                    playsInline
-                  >
-                    <source src={video.src} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-                <div className="mt-4 text-center">
-                  <p className="font-script text-xl text-foreground/80">{video.caption}</p>
-                </div>
-              </div>
-            </motion.div>
+            <VideoCard key={index} video={video} index={index} />
           ))}
         </div>
+
+        {/* Editable Note Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-2xl mx-auto"
+        >
+          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-primary/20 relative">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-xs uppercase tracking-widest font-medium shadow-md flex items-center gap-2">
+              <Edit2 className="w-3 h-3" />
+              Personal Note
+            </div>
+            
+            <div 
+              contentEditable 
+              suppressContentEditableWarning
+              className="font-serif text-lg md:text-xl text-center text-foreground/80 leading-relaxed outline-none min-h-[100px] empty:before:content-[attr(placeholder)] empty:before:text-muted-foreground"
+              placeholder="Write something special about her beauty/swag here... (Click to edit)"
+            >
+              Harshita, your style isn't just about what you wear, it's about the confidence you carry. Every look tells a story, and you're the main character in all of them. Keep slaying! ✨
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

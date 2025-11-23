@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import photo1 from "@assets/WhatsApp Image 2025-11-23 at 11.08.12 PM_1763919604345.jpeg";
 import photo2 from "@assets/3_1763919610467.jpeg";
-import photo3 from "@assets/2_1763919615344.jpeg";
+import photo3 from "@assets/2_1763920586256.jpeg";
 import photo4 from "@assets/4_1763919633102.jpeg";
 
 const photos = [
