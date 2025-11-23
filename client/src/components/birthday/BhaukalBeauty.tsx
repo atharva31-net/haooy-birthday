@@ -3,7 +3,8 @@ import { useRef, useState } from "react";
 import video1 from "@assets/WhatsApp Video 2025-11-23 at 11.17.31 PM_1763920386585.mp4";
 import video2 from "@assets/WhatsApp Video 2025-11-23 at 11.17.32 PM_1763920386585.mp4";
 import video3 from "@assets/WhatsApp Video 2025-11-23 at 11.18.31 PM_1763920386586.mp4";
-import { Edit2 } from "lucide-react";
+import specialEdit from "@assets/WhatsApp Video 2025-11-23 at 11.37.52 PM_1763921391724.mp4";
+import { Edit2, Volume2, VolumeX } from "lucide-react";
 
 const videos = [
   { src: video1, caption: "Slaying it!" },
@@ -60,6 +61,71 @@ function VideoCard({ video, index }: { video: { src: string, caption: string }, 
   );
 }
 
+function SpecialEditCard() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      if (!videoRef.current.muted) {
+        videoRef.current.volume = 0.2; // Set volume to 20%
+      }
+      setIsMuted(videoRef.current.muted);
+    }
+  };
+
+  const handleViewportEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        console.log("Autoplay blocked");
+      });
+    }
+  };
+
+  const handleViewportLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      onViewportEnter={handleViewportEnter}
+      onViewportLeave={handleViewportLeave}
+      className="mb-20 max-w-md mx-auto relative group"
+    >
+      <div className="bg-white p-2 pb-6 rounded-2xl shadow-2xl border border-primary/20">
+        <div className="relative aspect-[9/16] rounded-xl overflow-hidden bg-black">
+           {/* Volume Control */}
+           <button 
+            onClick={toggleMute}
+            className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/30 backdrop-blur-md border border-white/20 text-white hover:bg-black/50 transition-colors"
+          >
+            {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+          </button>
+
+          <video
+            ref={videoRef}
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src={specialEdit} type="video/mp4" />
+          </video>
+        </div>
+        <div className="mt-4 text-center">
+          <p className="font-script text-2xl text-primary">✨ Special Edit ✨</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function BhaukalBeauty() {
   return (
     <section className="py-24 bg-background relative overflow-hidden">
@@ -86,6 +152,9 @@ export default function BhaukalBeauty() {
           ))}
         </div>
 
+        {/* New Special Edit Section */}
+        <SpecialEditCard />
+
         {/* Editable Note Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -96,7 +165,7 @@ export default function BhaukalBeauty() {
           <div className="bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-primary/20 relative">
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-xs uppercase tracking-widest font-medium shadow-md flex items-center gap-2">
               <Edit2 className="w-3 h-3" />
-              Personal Note
+              Shayari ✨
             </div>
             
             <div 
