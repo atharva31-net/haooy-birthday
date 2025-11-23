@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { differenceInSeconds, formatDuration, intervalToDuration } from "date-fns";
+import bgVideo from "@assets/WhatsApp Video 2025-11-23 at 11.11.00 AM_1763876590251.mp4";
 
 interface CountdownOverlayProps {
   targetDate: Date;
@@ -39,9 +40,22 @@ export default function CountdownOverlay({ targetDate }: CountdownOverlayProps) 
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, y: -50, transition: { duration: 1, ease: "easeInOut" } }}
-          className="fixed inset-0 z-50 bg-background flex flex-col items-center justify-center text-center p-4"
+          className="fixed inset-0 z-50 bg-background flex flex-col items-center justify-center text-center p-4 overflow-hidden"
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-background to-background" />
+          {/* Video Background */}
+          <div className="absolute inset-0 z-0">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src={bgVideo} type="video/mp4" />
+            </video>
+            {/* Dark overlay for readability */}
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
+          </div>
           
           <motion.div 
             initial={{ scale: 0.9, opacity: 0 }}
@@ -49,7 +63,7 @@ export default function CountdownOverlay({ targetDate }: CountdownOverlayProps) 
             transition={{ duration: 0.8 }}
             className="relative z-10 max-w-2xl"
           >
-            <h1 className="font-serif text-4xl md:text-6xl text-foreground mb-8">
+            <h1 className="font-serif text-4xl md:text-6xl text-white mb-8 drop-shadow-lg">
               Wait for it...
             </h1>
             
@@ -60,7 +74,7 @@ export default function CountdownOverlay({ targetDate }: CountdownOverlayProps) 
               <TimeUnit value={duration.seconds || 0} label="Seconds" />
             </div>
 
-            <p className="mt-12 text-muted-foreground font-script text-2xl animate-pulse">
+            <p className="mt-12 text-white/90 font-script text-2xl animate-pulse drop-shadow-md">
               The surprise unlocks soon ❤️
             </p>
           </motion.div>
@@ -73,12 +87,12 @@ export default function CountdownOverlay({ targetDate }: CountdownOverlayProps) 
 function TimeUnit({ value, label }: { value: number; label: string }) {
   return (
     <div className="flex flex-col items-center">
-      <div className="w-20 h-20 md:w-24 md:h-24 bg-white shadow-lg rounded-xl flex items-center justify-center border border-primary/20">
+      <div className="w-20 h-20 md:w-24 md:h-24 bg-white/90 backdrop-blur-md shadow-xl rounded-xl flex items-center justify-center border border-white/40">
         <span className="text-3xl md:text-4xl font-serif text-primary font-bold">
           {value.toString().padStart(2, '0')}
         </span>
       </div>
-      <span className="mt-3 text-xs md:text-sm uppercase tracking-widest text-muted-foreground">
+      <span className="mt-3 text-xs md:text-sm uppercase tracking-widest text-white font-semibold drop-shadow-sm">
         {label}
       </span>
     </div>
